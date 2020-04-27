@@ -1,6 +1,6 @@
 """
 This is an example automated test to help you learn Qxf2's framework
-Our automated test will do the following:
+Automated test will do the following:
     #Open altoromutual form.
     #Click on Sign In link
     #Fill the form
@@ -24,7 +24,6 @@ def test_altoro_mutual_form(test_obj):
 
         #1. Create a test object and fill the example form.
         test_obj = PageFactory.get_page_object("Altoro_Mutual_Main_Page")
-
 
         #2. Setup and register a driver
         start_time = int(time.time())	#Set start_time with current time

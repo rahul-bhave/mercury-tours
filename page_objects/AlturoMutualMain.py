@@ -8,12 +8,12 @@ import pytest
 
 class AlturoMutualMain():
 
-    signin="xpath,//a[@id='LoginLink']"
-    submit="xpath,//input[@value='Login']"
-    fromAccount="xpath,//select[@name='fromAccount']/option[text()='800002 Savings']"
-    toAccount="xpath,//select[@name='fromAccount']/option[text()='800003 Checking']"
-    go="xpath,//input[@value='   GO   ']"
-    
+    signin = locators.signin
+    submit = locators.submit
+    fromAccount = locators.fromAccount
+    toAccount = locators.toAccount
+    go = locators.go
+
     @Wrapit._exceptionHandler
     def clik_signin(self):
         "use this method to click on sign in"
@@ -68,8 +68,6 @@ class AlturoMutualMain():
         else:
                 self.write ("Transaction unsuccessful")
 
-    
-    
     @Wrapit._exceptionHandler
     def view_account_summary(self):
         "View account summary"
