@@ -11,7 +11,5 @@ class Altoro_Mutual_Main_Page(Base_Page,AlturoMutualMain):
     
     def start(self):
         "Use this method to go to specific URL -- if needed"
-        url = 'http://demo.testfire.net/'
+        url = '/'
         self.open(url)
-    
-    
