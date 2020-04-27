@@ -15,8 +15,7 @@ import conf.login_form_conf as credentials
 import conf.testrail_caseid_conf as testrail_file
 
 
-def test_altoro_mutual_form(base_url,browser,browser_version,os_version,os_name,remote_flag,testrail_flag,tesults_flag,test_run_id,remote_project_name,remote_build_name):
-
+def test_altoro_mutual_form(test_obj):
     "Run the test"
     try:
         #Initalize flags for tests summary
@@ -24,25 +23,16 @@ def test_altoro_mutual_form(base_url,browser,browser_version,os_version,os_name,
         actual_pass = -1
 
         #1. Create a test object and fill the example form.
-        test_obj = PageFactory.get_page_object("Altoro_Mutual_Main_Page",base_url=base_url)
+        test_obj = PageFactory.get_page_object("Altoro_Mutual_Main_Page")
 
 
         #2. Setup and register a driver
         start_time = int(time.time())	#Set start_time with current time
-        test_obj.register_driver(remote_flag,os_name,os_version,browser,browser_version,remote_project_name,remote_build_name)
-        
-        #3. Setup TestRail reporting
-        if testrail_flag.lower()=='y':
-            if test_run_id is None:
-                test_obj.write('\033[91m'+"\n\nTestRail Integration Exception: It looks like you are trying to use TestRail Integration without providing test run id. \nPlease provide a valid test run id along with test run command using -R flag and try again. for eg: pytest -X Y -R 100\n"+'\033[0m')
-                testrail_flag = 'N'   
-            if test_run_id is not None:
-                test_obj.register_testrail()
 
-        if tesults_flag.lower()=='y':
-            test_obj.register_tesults()
+        #3. Turn on the highlighting feature
+        test_obj.turn_on_highlight()
         
-        #4 click on sign in link fill the form and submit the form
+        #4. Click on sign in link fill the form and submit the form
         test_obj.clik_signin()
         Username=credentials.Username
         Password=credentials.Password
@@ -50,7 +40,7 @@ def test_altoro_mutual_form(base_url,browser,browser_version,os_version,os_name,
         test_obj.driver.find_element_by_id("passw").send_keys(Password)
         test_obj.click_submit()
         
-        #5 Click on transfer fund link
+        #5. Click on transfer fund link
         test_obj.clik_transfer_funds()
 
         #6 Transfer funds
@@ -61,11 +51,10 @@ def test_altoro_mutual_form(base_url,browser,browser_version,os_version,os_name,
         #7 Account summary
         test_obj.view_account_summary()
 
-        #Teardown
+        #waiting for pass counters
         test_obj.wait(3)
         expected_pass = test_obj.result_counter
         actual_pass = test_obj.pass_counter
-        test_obj.teardown()
                   
     except Exception as e:
         print("Exception when trying to run test:%s"%__file__)
@@ -85,17 +74,28 @@ if __name__=='__main__':
                 
     #Run the test only if the options provided are valid
     if options_obj.check_options(options): 
-        test_altoro_mutual_form(base_url=options.url,
-                        browser=options.browser,
-                        browser_version=options.browser_version,
-                        os_version=options.os_version,
-                        os_name=options.os_name,
-                        remote_flag=options.remote_flag,
-                        testrail_flag=options.testrail_flag,
-                        tesults_flag=options.tesults_flag,
-                        test_run_id=options.test_run_id,
-                        remote_project_name=options.remote_project_name,
-                        remote_build_name=options.remote_build_name) 
+        test_obj = PageFactory.get_page_object("Zero",base_url=options.url)
+
+        #Setup and register a driver
+        test_obj.register_driver(options.remote_flag,options.os_name,options.os_version,options.browser,options.browser_version,options.remote_project_name,options.remote_build_name)
+
+        #Setup TestRail reporting
+        if options.testrail_flag.lower()=='y':
+            if options.test_run_id is None:
+                test_obj.write('\033[91m'+"\n\nTestRail Integration Exception: It looks like you are trying to use TestRail Integration without providing test run id. \nPlease provide a valid test run id along with test run command using -R flag and try again. for eg: pytest -X Y -R 100\n"+'\033[0m')
+                options.testrail_flag = 'N'   
+            if options.test_run_id is not None:
+                test_obj.register_testrail()
+                test_obj.set_test_run_id(options.test_run_id)
+
+        if options.tesults_flag.lower()=='y':
+            test_obj.register_tesults()
+
+        test_altoro_mutual_form(test_obj)
+                
+        #teardowm
+        test_obj.wait(3)
+        test_obj.teardown() 
     else:
         print('ERROR: Received incorrect comand line input arguments')
         print(option_obj.print_usage())
