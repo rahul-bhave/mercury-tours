@@ -1,5 +1,5 @@
 """
-This class handles all AltoroMutualMainPage
+This class handles all methods required to complete End to End scenario
 """
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
@@ -13,6 +13,7 @@ class AlturoMutualMain():
     fromAccount = locators.fromAccount
     toAccount = locators.toAccount
     go = locators.go
+    transfer_fund = locators.transfer_fund
 
     @Wrapit._exceptionHandler
     def clik_signin(self):
