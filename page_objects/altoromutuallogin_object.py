@@ -6,7 +6,7 @@ import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
 
-class AlturoMutualLogin():
+class Altoromutuallogin_object:
 
     submit = locators.submit
     
@@ -26,4 +26,5 @@ class AlturoMutualLogin():
         "use this method to click transfer funds"
         result_flag=self.driver.find_element_by_id("MenuHyperLink3").click()
         self.write("Transfer fund link clicked")
+        
         return result_flag

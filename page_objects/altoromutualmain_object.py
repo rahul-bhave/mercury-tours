@@ -93,4 +93,5 @@ class Altoromutualmain_object:
                negative='Failed to go on Login page',
                level='debug')
            self.switch_page("altoro_mutual_login_page")
+           
         return result_flag
