@@ -4,6 +4,7 @@ get_page_object() returns the appropriate page object.
 Add elif clauses as and when you implement new pages.
 Pages implemented so far:
 1. Altoro Mutual Main Page
+2. Altoro Mutual Login Page
 """
 
 from page_objects.zero_mobile_page import Zero_Mobile_Page
@@ -22,10 +23,8 @@ class PageFactory():
             test_obj = Zero_Page(base_url=base_url)
         elif page_name in ["zero mobile","zero mobile page"]:
             test_obj = Zero_Mobile_Page()
-        elif page_name=="altoro_mutual_main_page":
+        elif page_name == "altoro_mutual_main_page":
             test_obj = Altoro_Mutual_Main_Page(base_url=base_url)
-        elif page_name=="altoro_mutual_login_page":
-            test_obj = Altoro_Mutual_Login_Page(base_url=base_url)
         return test_obj
 
     get_page_object = staticmethod(get_page_object)

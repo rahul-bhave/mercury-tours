@@ -4,9 +4,9 @@ This class models the altoro mutual login page
 """
 from .Base_Page import Base_Page
 from utils.Wrapit import Wrapit
-from page_objects.AlturoMutualLogin import AlturoMutualLogin
+from page_objects.altoromutuallogin_object import Altoromutuallogin_object
 
-class Altoro_Mutual_Main_Page(Base_Page,AlturoMutualLogin):
+class Altoro_Mutual_Login_Page(Base_Page,Altoromutuallogin_object):
     "Page Object for the Altoro Mutual Main page"
     
     def start(self):
