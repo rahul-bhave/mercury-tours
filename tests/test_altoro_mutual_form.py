@@ -33,6 +33,11 @@ def test_altoro_mutual_form(test_obj):
         
         #4. Click on sign in link fill the form and submit the form
         test_obj.clik_signin()
+        """
+        is_screen_visible=test_obj.check_redirect_login()
+        if is_screen_visible is not None:
+            self.write("You are on login page")
+        """
         Username=credentials.Username
         Password=credentials.Password
         test_obj.driver.find_element_by_id("uid").send_keys(Username)

@@ -1,12 +1,12 @@
 """
-This class handles all methods required to complete End to End scenario
+This class handles all methods required for AlturoMutualMainpage
 """
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
 
-class AlturoMutualMain():
+class Altoromutualmain_object:
 
     signin = locators.signin
     submit = locators.submit
@@ -14,6 +14,8 @@ class AlturoMutualMain():
     toAccount = locators.toAccount
     go = locators.go
     transfer_fund = locators.transfer_fund
+
+    result_flag = False
 
     @Wrapit._exceptionHandler
     def clik_signin(self):
@@ -33,7 +35,7 @@ class AlturoMutualMain():
             positive='succesfully clicked',
             negative='click not successful',
             level='debug')
-        
+
         return result_flag
 
     @Wrapit._exceptionHandler
@@ -79,3 +81,16 @@ class AlturoMutualMain():
               self.write("Account summary shown")
         else:
               self.write("Summary not shown")
+
+    @Wrapit._exceptionHandler
+    def check_redirect_login(self):
+        result_flag = False
+        heading_login = "xpath,//h1[contains(text(),'Online Banking Login')]"
+        if self.check_element_present(heading_login) is not None:
+           result_flag = True
+           self.conditional_write(result_flag,
+               positive='You are on Login page',
+               negative='Failed to go on Login page',
+               level='debug')
+           self.switch_page("altoro_mutual_login_page")
+        return result_flag

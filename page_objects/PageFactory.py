@@ -24,6 +24,8 @@ class PageFactory():
             test_obj = Zero_Mobile_Page()
         elif page_name=="altoro_mutual_main_page":
             test_obj = Altoro_Mutual_Main_Page(base_url=base_url)
+        elif page_name=="altoro_mutual_login_page":
+            test_obj = Altoro_Mutual_Login_Page(base_url=base_url)
         return test_obj
 
     get_page_object = staticmethod(get_page_object)
