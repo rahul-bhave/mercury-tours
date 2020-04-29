@@ -2,6 +2,7 @@
 This class handles all methods required for AlturoMutualMainpage
 """
 from .Base_Page import Base_Page
+import conf.login_form_conf as credentials
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
@@ -14,6 +15,8 @@ class Altoromutualmain_object:
     toAccount = locators.toAccount
     go = locators.go
     transfer_fund = locators.transfer_fund
+    Username=credentials.Username
+    Password=credentials.Password
 
     result_flag = False
 
@@ -30,6 +33,8 @@ class Altoromutualmain_object:
     @Wrapit._exceptionHandler
     def click_submit(self):
         "use this method to click submit"
+        self.driver.find_element_by_id("uid").send_keys(self.Username)
+        self.driver.find_element_by_id("passw").send_keys(self.Password)
         result_flag=self.click_element(self.submit,wait_time=3)
         self.conditional_write(result_flag,
             positive='succesfully clicked',

@@ -11,7 +11,6 @@ import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
-import conf.login_form_conf as credentials
 import conf.testrail_caseid_conf as testrail_file
 
 
@@ -33,13 +32,8 @@ def test_altoro_mutual_form(test_obj):
         
         #4. Click on sign in link fill the form and submit the form
         test_obj.clik_signin()
-        is_screen_visible=test_obj.check_redirect_login()
-        if is_screen_visible is not None:
-            test_obj.write("You are on login page")
-        Username=credentials.Username
-        Password=credentials.Password
-        test_obj.driver.find_element_by_id("uid").send_keys(Username)
-        test_obj.driver.find_element_by_id("passw").send_keys(Password)
+
+        #5. Enter user details and submit the form
         test_obj.click_submit()
         
         #5. Click on transfer fund link
