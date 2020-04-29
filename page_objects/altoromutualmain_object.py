@@ -49,7 +49,7 @@ class Altoromutualmain_object:
         result_flag=self.driver.find_element_by_id("MenuHyperLink3").click()
         self.write("Transfer fund link clicked")
         return result_flag
-
+    """
     @Wrapit._exceptionHandler
     def add_from_account(self):
         "use this method to add toaccount"
@@ -63,10 +63,13 @@ class Altoromutualmain_object:
         result_flag=self.click_element(self.toAccount)
         self.write("Add to account")
         return result_flag
+    """
 
     @Wrapit._exceptionHandler
     def transfer_fund(self):
         "use this method to transfer amount"
+        self.click_element(self.fromAccount)
+        self.click_element(self.toAccount)
         self.driver.find_element_by_id("transferAmount").send_keys("300")
         self.driver.find_element_by_id("transfer").click()
         result_flag = self.driver.find_element_by_id("_ctl0__ctl0_Content_Main_postResp")
