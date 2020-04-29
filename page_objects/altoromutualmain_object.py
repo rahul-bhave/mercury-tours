@@ -49,22 +49,7 @@ class Altoromutualmain_object:
         result_flag=self.driver.find_element_by_id("MenuHyperLink3").click()
         self.write("Transfer fund link clicked")
         return result_flag
-    """
-    @Wrapit._exceptionHandler
-    def add_from_account(self):
-        "use this method to add toaccount"
-        result_flag=self.click_element(self.fromAccount)
-        self.write("Add to account added")
-        return result_flag
-
-    @Wrapit._exceptionHandler
-    def add_to_account(self):
-        "use this method to add fromaccount"
-        result_flag=self.click_element(self.toAccount)
-        self.write("Add to account")
-        return result_flag
-    """
-
+  
     @Wrapit._exceptionHandler
     def transfer_fund(self):
         "use this method to transfer amount"
@@ -89,17 +74,3 @@ class Altoromutualmain_object:
               self.write("Account summary shown")
         else:
               self.write("Summary not shown")
-
-    @Wrapit._exceptionHandler
-    def check_redirect_login(self):
-        result_flag = False
-        heading_login = "xpath,//h1[contains(text(),'Online Banking Login')]"
-        if self.check_element_present(heading_login) is not None:
-           result_flag = True
-           self.conditional_write(result_flag,
-               positive='You are on Login page',
-               negative='Failed to go on Login page',
-               level='debug')
-           self.switch_page("altoro_mutual_login_page")
-           
-        return result_flag

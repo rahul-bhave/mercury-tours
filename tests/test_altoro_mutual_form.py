@@ -40,8 +40,6 @@ def test_altoro_mutual_form(test_obj):
         test_obj.clik_transfer_funds()
 
         #6 Transfer funds
-        #test_obj.add_from_account()
-        #test_obj.add_to_account()
         test_obj.transfer_fund()
 
         #7 Account summary
