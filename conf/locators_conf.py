@@ -16,7 +16,7 @@
 signin="xpath,//a[@id='LoginLink']"
 submit="xpath,//input[@value='Login']"
 fromAccount="xpath,//select[@name='fromAccount']/option[text()='800002 Savings']"
-toAccount="xpath,//select[@name='fromAccount']/option[text()='800003 Checking']"
+toAccount="xpath,//select[@name='toAccount']/option[text()='800003 Checking']"
 go="xpath,//input[@value='   GO   ']"
 transfer_fund="xpath,//a[@id='MenuHyperLink3']"
 #----
