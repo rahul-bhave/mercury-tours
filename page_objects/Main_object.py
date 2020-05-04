@@ -10,6 +10,8 @@ import pytest
 class Main_object:
 
     signin = locators.signin
+    username_field = locators.username
+    password_field = locators.password
     submit = locators.submit
     fromAccount = locators.fromAccount
     toAccount = locators.toAccount
@@ -31,10 +33,32 @@ class Main_object:
         return result_flag
 
     @Wrapit._exceptionHandler
+    def set_username(self, username_field):
+        "user this method to enter username"
+        result_flag = self.set_text(self.username_field, self.Username)
+        self.conditional_write(result_flag,
+            positive='Set the Username to: %s'%self.Username,
+            negative='Failed to set the name in the form',
+            level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    def set_password(self, password_field):
+        "user this method to enter username"
+        result_flag = self.set_text(self.password_field, self.Password)
+        self.conditional_write(result_flag,
+            positive='Password set succeefully',
+            negative='Failed to set the name in the form',
+            level='debug')
+
+        return result_flag 
+
+    @Wrapit._exceptionHandler
     def click_submit(self):
         "use this method to click submit"
-        self.driver.find_element_by_id("uid").send_keys(self.Username)
-        self.driver.find_element_by_id("passw").send_keys(self.Password)
+        self.set_username(self.Username)
+        self.set_password(self.Password)
         result_flag=self.click_element(self.submit,wait_time=3)
         self.conditional_write(result_flag,
             positive='succesfully clicked',
@@ -59,7 +83,6 @@ class Main_object:
         self.driver.find_element_by_id("transferAmount").send_keys("300")
         self.driver.find_element_by_id("transfer").click()
         result_flag = self.driver.find_element_by_id("_ctl0__ctl0_Content_Main_postResp")
-        #self.driver.save_screenshot("C:\\Users\\Rahul Bhave Qxf2\\code\\rahul-qxf2\\altoro-mutual-pom\\screenshots\\Transferamount.png")
         if result_flag.is_displayed():
                 self.write ("Transaction successful" )
         else:

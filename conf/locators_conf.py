@@ -14,6 +14,8 @@
 
 #Locators for the form object(AlturoMutualMain.py)
 signin="xpath,//a[@id='LoginLink']"
+username = "xpath,//input[@id='uid']"
+password = "xpath,//input[@id='passw']"
 submit="xpath,//input[@value='Login']"
 fromAccount="xpath,//select[@name='fromAccount']/option[text()='800002 Savings']"
 toAccount="xpath,//select[@name='toAccount']/option[text()='800003 Checking']"
