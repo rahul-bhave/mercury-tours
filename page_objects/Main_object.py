@@ -57,13 +57,21 @@ class Main_object:
     @Wrapit._exceptionHandler
     def click_submit(self):
         "use this method to click submit"
-        self.set_username(self.Username)
-        self.set_password(self.Password)
-        result_flag=self.click_element(self.submit,wait_time=3)
+        result_flag=self.click_element(self.submit, wait_time=3)
         self.conditional_write(result_flag,
             positive='succesfully clicked',
             negative='click not successful',
             level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    @Wrapit._screenshot
+    def submit_form(self):
+        "submit the form"
+        result_flag = self.set_username(self.Username)
+        result_flag &= self.set_password(self.Password)
+        result_flag &= self.click_submit()
 
         return result_flag
 

@@ -10,6 +10,7 @@ Automated test will do the following:
 import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
+from page_objects.Main_object import Main_object
 from utils.Option_Parser import Option_Parser
 import conf.testrail_caseid_conf as testrail_file
 
@@ -34,7 +35,7 @@ def test_altoro_mutual_form(test_obj):
         test_obj.clik_signin()
 
         #5. Enter user details and submit the form
-        test_obj.click_submit()
+        test_obj.submit_form()
         
         #5. Click on transfer fund link
         test_obj.clik_transfer_funds()
