@@ -7,7 +7,7 @@ import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
 
-class Altoromutualmain_object:
+class Main_object:
 
     signin = locators.signin
     submit = locators.submit

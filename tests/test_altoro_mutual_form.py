@@ -22,7 +22,7 @@ def test_altoro_mutual_form(test_obj):
         actual_pass = -1
 
         #1. Create a test object and fill the example form.
-        test_obj = PageFactory.get_page_object("Altoro_Mutual_Main_Page")
+        test_obj = PageFactory.get_page_object("Main_Page")
 
         #2. Setup and register a driver
         start_time = int(time.time())	#Set start_time with current time
