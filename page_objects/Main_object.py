@@ -51,6 +51,7 @@ class Main_object:
         return result_flag
   
     @Wrapit._exceptionHandler
+    @Wrapit._screenshot
     def transfer_fund(self):
         "use this method to transfer amount"
         self.click_element(self.fromAccount)
@@ -58,13 +59,14 @@ class Main_object:
         self.driver.find_element_by_id("transferAmount").send_keys("300")
         self.driver.find_element_by_id("transfer").click()
         result_flag = self.driver.find_element_by_id("_ctl0__ctl0_Content_Main_postResp")
-        self.driver.save_screenshot("C:\\Users\\Rahul Bhave Qxf2\\code\\rahul-qxf2\\altoro-mutual-pom\\screenshots\\Transferamount.png")
+        #self.driver.save_screenshot("C:\\Users\\Rahul Bhave Qxf2\\code\\rahul-qxf2\\altoro-mutual-pom\\screenshots\\Transferamount.png")
         if result_flag.is_displayed():
                 self.write ("Transaction successful" )
         else:
                 self.write ("Transaction unsuccessful")
 
     @Wrapit._exceptionHandler
+    @Wrapit._screenshot
     def view_account_summary(self):
         "View account summary"
         self.driver.find_element_by_id("MenuHyperLink1").click()
