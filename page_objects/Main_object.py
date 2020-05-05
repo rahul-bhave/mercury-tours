@@ -18,10 +18,12 @@ class Main_object:
     fromAccountOption = locators.fromaccount_option
     toAccount = locators.toaccount_dropdown
     toAccountOption = locators.toaccount_option
+    transferAmountText = locators.transferammount_text
     go = locators.go
     Username=credentials.Username
     Password=credentials.Password
-
+    Amount = "300"
+    
     result_flag = False
 
     @Wrapit._exceptionHandler
@@ -107,6 +109,18 @@ class Main_object:
         self.wait(wait_time)
         result_flag &= self.click_element(self.toAccountOption)
         self.conditional_write(result_flag,
+            positive='to account set',
+            negative='failed to set to Account',
+            level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    def set_transaction_amount(self, Transferamount, Amount, wait_time=1):
+        "Set the transaction amount"
+        result_flag = self.set_text(self.transferAmountText, self.Amount)
+        self.wait(wait_time)
+        self.conditional_write(result_flag,
             positive='from account set',
             negative='failed to set from Account',
             level='debug')
@@ -119,7 +133,7 @@ class Main_object:
         "use this method to transfer amount"
         self.add_from_account(self.fromAccountOption)
         self.add_to_account(self.toAccountOption)
-        self.driver.find_element_by_id("transferAmount").send_keys("300")
+        self.set_transaction_amount(self.transferAmountText,"300")
         self.driver.find_element_by_id("transfer").click()
         result_flag = self.driver.find_element_by_id("_ctl0__ctl0_Content_Main_postResp")
         if result_flag.is_displayed():
