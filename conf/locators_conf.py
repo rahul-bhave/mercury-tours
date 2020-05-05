@@ -24,11 +24,10 @@ toaccount_dropdown = "xpath,//select[@id='toAccount']"
 toaccount_option = "xpath,//option[@value='800003']"
 transferammount_text = "xpath,//input[@id='transferAmount']"
 transferamount_button = "xpath,//input[@id='transfer']"
-transfer_amount_check="xpath,//span[contains(text(),'300.0 was successfully transferred')]"
+transfer_amount_check="xpath,//span[@id='_ctl0__ctl0_Content_Main_postResp']"
 view_account_summary_link = "xpath,//a[@id='MenuHyperLink1']"
 go="xpath,//input[@value='   GO   ']"
 view_account_summary_check = "xpath,//h1[contains(text(),'Account History')]"
-# To be deleted
 fromAccount="xpath,//select[@name='fromAccount']/option[text()='800002 Savings']"
 toAccount="xpath,//select[@name='toAccount']/option[text()='800003 Checking']"
 #----
