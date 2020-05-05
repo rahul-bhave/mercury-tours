@@ -9,7 +9,7 @@ Pages implemented so far:
 
 from page_objects.zero_mobile_page import Zero_Mobile_Page
 from page_objects.zero_page import Zero_Page
-from page_objects.Main_page import Main_Page
+from page_objects.Main_Page import Main_Page
 import conf.base_url_conf
 
 
