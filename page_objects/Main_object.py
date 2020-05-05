@@ -13,6 +13,7 @@ class Main_object:
     username_field = locators.username
     password_field = locators.password
     submit = locators.submit
+    transfer_link = locators.transfer_link
     fromAccount = locators.fromAccount
     toAccount = locators.toAccount
     go = locators.go
@@ -78,38 +79,19 @@ class Main_object:
     @Wrapit._exceptionHandler
     def clik_transfer_funds(self):
         "use this method to click transfer funds"
-        result_flag=self.driver.find_element_by_id("MenuHyperLink3").click()
-        self.write("Transfer fund link clicked")
-        return result_flag
-
-    @Wrapit._exceptionHandler
-    @Wrapit._screenshot
-    def get_fromAccount(self, fromAccount):
-        "select from Account"
-        result_flag = self.set_text(fromAccount, self.fromAccount)
-        self.conditional_write(result_flag, positive='Added from account', negative='Could not added', level='debug')
-
-        return result_flag
-
-    @Wrapit._exceptionHandler
-    @Wrapit._screenshot
-    def get_toAccount(self, toAccount):
-        "select from Account"
-        result_flag = self.set_text(toAccount, self.toAccount)
-        self.conditional_write(result_flag, positive='Added from account', negative='Could not added', level='debug')
-
+        result_flag=self.click_element(self.transfer_link,wait_time=3)
+        self.conditional_write(result_flag,
+            positive='transfer funds link clicked',
+            negative='transfer funds link can not be clicked',
+            level='debug')
         return result_flag
   
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def transfer_fund(self):
         "use this method to transfer amount"
-        """
         self.click_element(self.fromAccount)
         self.click_element(self.toAccount)
-        """
-        self.get_fromAccount(self.fromAccount)
-        self.get_toAccount(self.toAccount)
         self.driver.find_element_by_id("transferAmount").send_keys("300")
         self.driver.find_element_by_id("transfer").click()
         result_flag = self.driver.find_element_by_id("_ctl0__ctl0_Content_Main_postResp")
