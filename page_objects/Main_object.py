@@ -26,7 +26,7 @@ class Main_object:
     account_summary_check = locators.view_account_summary_check
     Username=credentials.Username
     Password=credentials.Password
-    Amount = "300"
+    Amount = credentials.Amount
     
     result_flag = False
 
