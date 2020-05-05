@@ -148,7 +148,7 @@ class Main_object:
         self.add_to_account(self.toAccountOption)
         self.set_transaction_amount(self.transferAmountText,"300")
         self.submit_transfer_fund()
-        result_flag= self.check_element_displayed(self.AmountTransferCheck)
+        result_flag = self.check_element_displayed(self.AmountTransferCheck)
         self.wait(3)
         self.conditional_write(result_flag,
             positive='Element located',
@@ -160,7 +160,18 @@ class Main_object:
     @Wrapit._exceptionHandler
     def click_view_account_summary(self):
         "click on view account summary"
-        result_flag=self.click_element(self.account_summary_link, wait_time=3)
+        result_flag = self.click_element(self.account_summary_link, wait_time=3)
+        self.conditional_write(result_flag,
+            positive='succesfully clicked',
+            negative='click not successful',
+            level='debug')
+
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    def click_go_button(self):
+        "clicking on go button"
+        result_flag = self.click_element(self.go)
         self.conditional_write(result_flag,
             positive='succesfully clicked',
             negative='click not successful',
@@ -175,9 +186,10 @@ class Main_object:
         "View account summary"
         """
         self.driver.find_element_by_id("MenuHyperLink1").click()
+        self.click_element(self.go)
         """
         self.click_view_account_summary()
-        self.click_element(self.go)
+        self.click_go_button()
         result_flag=self.driver.find_element_by_xpath("//html/body/table[2]/tbody/tr/td[2]/div/h1[contains(text(),'Account History - 800002 Savings')]")
         if result_flag.is_displayed():
               self.write("Account summary shown")
