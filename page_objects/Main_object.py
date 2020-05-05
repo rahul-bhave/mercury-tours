@@ -21,6 +21,7 @@ class Main_object:
     transferAmountText = locators.transferammount_text
     transferAmountButton = locators.transferamount_button
     AmountTransferCheck = locators.transfer_amount_check
+    account_summary_link = locators.view_account_summary_link
     go = locators.go
     Username=credentials.Username
     Password=credentials.Password
@@ -155,12 +156,27 @@ class Main_object:
             level='debug')
 
         return result_flag
-        
+
+    @Wrapit._exceptionHandler
+    def click_view_account_summary(self):
+        "click on view account summary"
+        result_flag=self.click_element(self.account_summary_link, wait_time=3)
+        self.conditional_write(result_flag,
+            positive='succesfully clicked',
+            negative='click not successful',
+            level='debug')
+
+        return result_flag
+
+
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def view_account_summary(self):
         "View account summary"
+        """
         self.driver.find_element_by_id("MenuHyperLink1").click()
+        """
+        self.click_view_account_summary()
         self.click_element(self.go)
         result_flag=self.driver.find_element_by_xpath("//html/body/table[2]/tbody/tr/td[2]/div/h1[contains(text(),'Account History - 800002 Savings')]")
         if result_flag.is_displayed():
