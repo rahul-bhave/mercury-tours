@@ -19,6 +19,8 @@ class Main_object:
     toAccount = locators.toaccount_dropdown
     toAccountOption = locators.toaccount_option
     transferAmountText = locators.transferammount_text
+    transferAmountButton = locators.transferamount_button
+    AmountTransferCheck = locators.transfer_amount_check
     go = locators.go
     Username=credentials.Username
     Password=credentials.Password
@@ -121,8 +123,18 @@ class Main_object:
         result_flag = self.set_text(self.transferAmountText, self.Amount)
         self.wait(wait_time)
         self.conditional_write(result_flag,
-            positive='from account set',
-            negative='failed to set from Account',
+            positive='transcations amount set',
+            negative='could not set transaction amount',
+            level='debug')
+
+        return result_flag
+
+    def submit_transfer_fund(self):
+        "use this method to click on transfer fund button"
+        result_flag = self.click_element(self.transferAmountButton)
+        self.conditional_write(result_flag,
+            positive='succesfully clicked',
+            negative='click not successful',
             level='debug')
 
         return result_flag
@@ -134,13 +146,16 @@ class Main_object:
         self.add_from_account(self.fromAccountOption)
         self.add_to_account(self.toAccountOption)
         self.set_transaction_amount(self.transferAmountText,"300")
-        self.driver.find_element_by_id("transfer").click()
-        result_flag = self.driver.find_element_by_id("_ctl0__ctl0_Content_Main_postResp")
-        if result_flag.is_displayed():
-                self.write ("Transaction successful" )
-        else:
-                self.write ("Transaction unsuccessful")
+        self.submit_transfer_fund()
+        result_flag= self.check_element_displayed(self.AmountTransferCheck)
+        self.wait(3)
+        self.conditional_write(result_flag,
+            positive='Element located',
+            negative='Element not located',
+            level='debug')
 
+        return result_flag
+        
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def view_account_summary(self):
