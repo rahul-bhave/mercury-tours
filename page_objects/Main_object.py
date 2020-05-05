@@ -23,6 +23,7 @@ class Main_object:
     AmountTransferCheck = locators.transfer_amount_check
     account_summary_link = locators.view_account_summary_link
     go = locators.go
+    account_summary_check = locators.view_account_summary_check
     Username=credentials.Username
     Password=credentials.Password
     Amount = "300"
@@ -179,19 +180,17 @@ class Main_object:
 
         return result_flag
 
-
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def view_account_summary(self):
         "View account summary"
-        """
-        self.driver.find_element_by_id("MenuHyperLink1").click()
-        self.click_element(self.go)
-        """
         self.click_view_account_summary()
         self.click_go_button()
-        result_flag=self.driver.find_element_by_xpath("//html/body/table[2]/tbody/tr/td[2]/div/h1[contains(text(),'Account History - 800002 Savings')]")
-        if result_flag.is_displayed():
-              self.write("Account summary shown")
-        else:
-              self.write("Summary not shown")
+        result_flag = self.check_element_displayed(self.account_summary_check)
+        self.wait(3)
+        self.conditional_write(result_flag,
+            positive='Element located',
+            negative='Element not located',
+            level='debug')
+
+        return result_flag  

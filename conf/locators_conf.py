@@ -17,6 +17,8 @@ signin="xpath,//a[@id='LoginLink']"
 username = "xpath,//input[@id='uid']"
 password = "xpath,//input[@id='passw']"
 submit="xpath,//input[@value='Login']"
+
+#Locators for login page
 transfer_link = "xpath,//a[@id='MenuHyperLink3']"
 fromaccount_dropdown = "xpath,//select[@id='fromAccount']"
 fromaccount_option = "xpath,//option[@value='800002']"
@@ -25,9 +27,10 @@ toaccount_option = "xpath,//option[@value='800003']"
 transferammount_text = "xpath,//input[@id='transferAmount']"
 transferamount_button = "xpath,//input[@id='transfer']"
 transfer_amount_check="xpath,//span[@id='_ctl0__ctl0_Content_Main_postResp']"
+
+#Locators for view account summary
 view_account_summary_link = "xpath,//a[@id='MenuHyperLink1']"
 go="xpath,//input[@value='   GO   ']"
 view_account_summary_check = "xpath,//h1[contains(text(),'Account History')]"
-fromAccount="xpath,//select[@name='fromAccount']/option[text()='800002 Savings']"
-toAccount="xpath,//select[@name='toAccount']/option[text()='800003 Checking']"
+
 #----
