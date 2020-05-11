@@ -14,7 +14,6 @@ from page_objects.Main_object import Main_object
 from utils.Option_Parser import Option_Parser
 import conf.testrail_caseid_conf as testrail_file
 
-
 def test_altoro_mutual_form(test_obj):
     "Run the test"
     try:
@@ -33,7 +32,8 @@ def test_altoro_mutual_form(test_obj):
         
         #4. Click on sign in link fill the form and submit the form
         test_obj.clik_signin()
-
+        is_screen_visible = test_obj.check_redirect_login()
+        
         #5. Enter user details and submit the form
         test_obj.submit_form()
         
@@ -50,7 +50,8 @@ def test_altoro_mutual_form(test_obj):
         test_obj.wait(3)
         expected_pass = test_obj.result_counter
         actual_pass = test_obj.pass_counter
-                  
+
+            
     except Exception as e:
         print("Exception when trying to run test:%s"%__file__)
         print("Python says:%s"%str(e))

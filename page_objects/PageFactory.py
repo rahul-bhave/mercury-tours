@@ -10,6 +10,7 @@ Pages implemented so far:
 from page_objects.zero_mobile_page import Zero_Mobile_Page
 from page_objects.zero_page import Zero_Page
 from page_objects.Main_Page import Main_Page
+from page_objects.Login_Redirect_Page import Login_Redirect_Page
 import conf.base_url_conf
 
 
@@ -25,6 +26,8 @@ class PageFactory():
             test_obj = Zero_Mobile_Page()
         elif page_name == "main_page":
             test_obj = Main_Page(base_url=base_url)
+        elif page_name == "login_redirect_page":
+            test_obj = Login_Redirect_Page(base_url=base_url)
         return test_obj
 
     get_page_object = staticmethod(get_page_object)

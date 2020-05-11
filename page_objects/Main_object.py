@@ -1,5 +1,5 @@
 """
-This class handles all methods required for AlturoMutualMainpage
+This class handles all methods required for Main_page
 """
 from .Base_Page import Base_Page
 import conf.login_form_conf as credentials
@@ -10,6 +10,7 @@ import pytest
 class Main_object:
 
     signin = locators.signin
+    login_redirect = locators.login_redirect
     username_field = locators.username
     password_field = locators.password
     submit = locators.submit
@@ -27,7 +28,7 @@ class Main_object:
     Username=credentials.Username
     Password=credentials.Password
     Amount = credentials.Amount
-    
+   
     result_flag = False
 
     @Wrapit._exceptionHandler
@@ -39,6 +40,19 @@ class Main_object:
             negative='click not success',
             level='debug')
         return result_flag
+
+    @Wrapit._screenshot
+    @Wrapit._exceptionHandler
+    def check_redirect_login(self):
+        result_flag = False
+        if self.check_element_present(self.login_redirect) is not None:
+           result_flag = True
+           self.conditional_write(result_flag,
+               positive='You are on Login page',
+               negative='Failed to go on Login page',
+               level='debug')
+           self.switch_page("login_redirect_page")
+        return result_flag 
 
     @Wrapit._exceptionHandler
     def set_username(self, username_field):
