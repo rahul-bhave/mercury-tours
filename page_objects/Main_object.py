@@ -1,5 +1,5 @@
 """
-This class handles all methods required for Main_page
+This class handles all methods required for all pages
 """
 from .Base_Page import Base_Page
 import conf.login_form_conf as credentials
@@ -12,6 +12,7 @@ class Main_object:
     signin = locators.signin
     login_redirect = locators.login_redirect
     transfer_fund_redirect = locators.transfer_fund_redirect
+    bank_main_redirect = locators.bank_main_page_redirect
     username_field = locators.username
     password_field = locators.password
     submit = locators.submit
@@ -174,7 +175,9 @@ class Main_object:
     def transfer_fund(self):
         "use this method to transfer amount"
         self.add_from_account(self.fromAccountOption)
+        self.wait(3)
         self.add_to_account(self.toAccountOption)
+        self.wait(3)
         self.set_transaction_amount(self.transferAmountText,"300")
         self.submit_transfer_fund()
         result_flag = self.check_element_displayed(self.AmountTransferCheck)
@@ -197,6 +200,19 @@ class Main_object:
 
         return result_flag
 
+    @Wrapit._screenshot
+    @Wrapit._exceptionHandler
+    def check_redirect_bank_page(self):
+        result_flag = False
+        if self.check_element_present(self.bank_main_redirect) is not None:
+           result_flag = True
+           self.conditional_write(result_flag,
+               positive='You are on Bank page',
+               negative='Failed to go on Bank page',
+               level='debug')
+           self.switch_page("bank_main_redirect_page")
+        return result_flag 
+
     @Wrapit._exceptionHandler
     def click_go_button(self):
         "clicking on go button"
@@ -212,7 +228,7 @@ class Main_object:
     @Wrapit._screenshot
     def view_account_summary(self):
         "View account summary"
-        self.click_view_account_summary()
+        # self.click_view_account_summary()
         self.click_go_button()
         result_flag = self.check_element_displayed(self.account_summary_check)
         self.wait(3)

@@ -12,7 +12,7 @@
 #XPATH
 ###########################################
 
-#Locators for the form object(Main_Page.py)
+#Locators for the Main Page
 signin="xpath,//a[@id='LoginLink']"
 login_redirect = "xpath//h1[contains(text(),'Online Banking Login')]"
 
@@ -32,9 +32,10 @@ transferammount_text = "xpath,//input[@id='transferAmount']"
 transferamount_button = "xpath,//input[@id='transfer']"
 transfer_amount_check="xpath,//span[@id='_ctl0__ctl0_Content_Main_postResp']"
 
-#Locators for view account summary
+#Locators for Bank Main Page
 view_account_summary_link = "xpath,//a[@id='MenuHyperLink1']"
+bank_main_page_redirect = "xpath,//p[contains(text(),'Welcome to Altoro Mutual Online.')]"
+
+#Locators for View Account Summary Page
 go="xpath,//input[@value='   GO   ']"
 view_account_summary_check = "xpath,//h1[contains(text(),'Account History')]"
-
-#----
