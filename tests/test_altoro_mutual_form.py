@@ -10,7 +10,7 @@ Automated test will do the following:
 import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
-from page_objects.Main_object import Main_object
+from page_objects.main_object import Main_object
 from utils.Option_Parser import Option_Parser
 import conf.testrail_caseid_conf as testrail_file
 
