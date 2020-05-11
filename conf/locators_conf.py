@@ -36,6 +36,6 @@ transfer_amount_check="xpath,//span[@id='_ctl0__ctl0_Content_Main_postResp']"
 view_account_summary_link = "xpath,//a[@id='MenuHyperLink1']"
 bank_main_page_redirect = "xpath,//p[contains(text(),'Welcome to Altoro Mutual Online.')]"
 
-#Locators for View Account Summary Page
+#Locators for View Account Summary
 go="xpath,//input[@value='   GO   ']"
 view_account_summary_check = "xpath,//h1[contains(text(),'Account History')]"

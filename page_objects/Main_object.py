@@ -228,7 +228,6 @@ class Main_object:
     @Wrapit._screenshot
     def view_account_summary(self):
         "View account summary"
-        # self.click_view_account_summary()
         self.click_go_button()
         result_flag = self.check_element_displayed(self.account_summary_check)
         self.wait(3)

@@ -3,7 +3,7 @@ This is an example automated test to help you learn Qxf2's framework
 Automated test will do the following:
     #Open altoromutual form.
     #Click on Sign In link
-    #Fill the form
+    #Fill the Login form
     #Transfer the amount from one account to other
     #View the transfered amount
 """
