@@ -39,6 +39,7 @@ def test_altoro_mutual_form(test_obj):
         
         #5. Click on transfer fund link
         test_obj.clik_transfer_funds()
+        is_screen_visible = test_obj.check_redirect_transfer_fund()
 
         #6 Transfer funds
         test_obj.transfer_fund()

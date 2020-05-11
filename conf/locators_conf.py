@@ -14,13 +14,16 @@
 
 #Locators for the form object(Main_Page.py)
 signin="xpath,//a[@id='LoginLink']"
-login_redirect = "xpath////h1[contains(text(),'Online Banking Login')]"
+login_redirect = "xpath//h1[contains(text(),'Online Banking Login')]"
 
 #Locators for login page
 username = "xpath,//input[@id='uid']"
 password = "xpath,//input[@id='passw']"
 submit="xpath,//input[@value='Login']"
 transfer_link = "xpath,//a[@id='MenuHyperLink3']"
+transfer_fund_redirect = "xpath//h1[contains(text(),'Transfer Funds')]"
+
+#Locators for Transfer Fund Page
 fromaccount_dropdown = "xpath,//select[@id='fromAccount']"
 fromaccount_option = "xpath,//option[@value='800002']"
 toaccount_dropdown = "xpath,//select[@id='toAccount']"

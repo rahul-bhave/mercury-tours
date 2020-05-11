@@ -11,6 +11,7 @@ class Main_object:
 
     signin = locators.signin
     login_redirect = locators.login_redirect
+    transfer_fund_redirect = locators.transfer_fund_redirect
     username_field = locators.username
     password_field = locators.password
     submit = locators.submit
@@ -106,6 +107,19 @@ class Main_object:
             negative='transfer funds link can not be clicked',
             level='debug')
         return result_flag
+
+    @Wrapit._screenshot
+    @Wrapit._exceptionHandler
+    def check_redirect_transfer_fund(self):
+        result_flag = False
+        if self.check_element_present(self.transfer_fund_redirect) is not None:
+           result_flag = True
+           self.conditional_write(result_flag,
+               positive='You are on Tranasfer Fund page',
+               negative='Failed to go on Transfer Fund page',
+               level='debug')
+           self.switch_page("transfer_fund_redirect_page")
+        return result_flag 
 
     @Wrapit._exceptionHandler
     def add_from_account(self, fromAccount, wait_time=3):
