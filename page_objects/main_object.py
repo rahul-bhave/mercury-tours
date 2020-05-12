@@ -10,12 +10,7 @@ class Main_object:
 
     signin = locators.signin
     login_redirect = locators.login_redirect
-    transfer_fund_redirect = locators.transfer_fund_redirect
     bank_main_redirect = locators.bank_main_page_redirect
-    username_field = locators.username
-    password_field = locators.password
-    submit = locators.submit
-    transfer_link = locators.transfer_link
     fromAccount = locators.fromaccount_dropdown
     fromAccountOption = locators.fromaccount_option
     toAccount = locators.toaccount_dropdown
@@ -52,6 +47,15 @@ class Main_object:
            self.switch_page("login_redirect_page")
         return result_flag 
 
+    @Wrapit._exceptionHandler
+    def access_login_page(self):
+        "method to access login page"
+        result_flag = self.clik_signin()
+        result_flag &= self.check_redirect_login()
+
+        return result_flag
+
+    """
     @Wrapit._exceptionHandler
     def set_username(self, Username):
         "user this method to enter username"
@@ -120,6 +124,8 @@ class Main_object:
            self.switch_page("transfer_fund_redirect_page")
         return result_flag 
 
+    """
+
     @Wrapit._exceptionHandler
     def add_from_account(self, fromAccount, wait_time=3):
         "Use this method to add from Account"
@@ -172,9 +178,7 @@ class Main_object:
     @Wrapit._screenshot
     def transfer_fund(self, Amount, wait_time=3):
         "use this method to transfer amount"
-        result_flag = self.clik_transfer_funds()
-        result_flag &= self.check_redirect_transfer_fund()
-        result_flag &= self.add_from_account(self.fromAccountOption)
+        result_flag = self.add_from_account(self.fromAccountOption)
         result_flag &= self.smart_wait(wait_time,self.fromAccountOption)
         result_flag &= self.add_to_account(self.toAccountOption)
         result_flag &= self.smart_wait(wait_time, self.toAccountOption)

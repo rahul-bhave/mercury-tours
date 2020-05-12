@@ -11,6 +11,7 @@ import os,sys,time
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from page_objects.main_object import Main_object
+from page_objects.login_object import Login_object
 from utils.Option_Parser import Option_Parser
 import conf.bank_form_conf as account
 import conf.login_form_conf as credentials
@@ -31,12 +32,20 @@ def test_altoro_mutual_form(test_obj):
 
         #3. Turn on the highlighting feature
         test_obj.turn_on_highlight()
+
+        #4 Access Login page
+        result_flag = test_obj.access_login_page()
+        test_obj.log_result(result_flag,positive="Login Page accessed\n",negative="Login Page not accessible")
         
         #4. Login into application
         Username=credentials.Username
         Password=credentials.Password
         result_flag = test_obj.Login(Username, Password)
         test_obj.log_result(result_flag,positive="Login successful\n",negative="\nLogin not successful\n")
+
+        #5 Access Transfer Fund link
+        result_flag = test_obj.access_transfer_fund()
+        test_obj.log_result(result_flag,positive="Transfer fund accessible\n",negative="\n Transfer fund not accessible")
         
         #5 Transfer funds
         Amount = account.Amount
