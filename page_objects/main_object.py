@@ -89,7 +89,9 @@ class Main_object:
     @Wrapit._screenshot
     def Login(self, Username, Password):
         "submit the form"
-        result_flag = self.set_username(Username)
+        result_flag = self.clik_signin()
+        result_flag &= self.check_redirect_login()
+        result_flag &= self.set_username(Username)
         result_flag &= self.set_password(Password)
         result_flag &= self.click_submit()
 

@@ -33,8 +33,8 @@ def test_altoro_mutual_form(test_obj):
         test_obj.turn_on_highlight()
         
         #4. Click on sign in link fill the form and submit the form
-        test_obj.clik_signin()
-        is_screen_visible = test_obj.check_redirect_login()
+        #test_obj.clik_signin()
+        #is_screen_visible = test_obj.check_redirect_login()
         
         #5. Enter user details and submit the form
         Username=credentials.Username
