@@ -12,6 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from page_objects.main_object import Main_object
 from utils.Option_Parser import Option_Parser
+import conf.bank_conf as account
 import conf.login_form_conf as credentials
 import conf.testrail_caseid_conf as testrail_file
 
@@ -45,7 +46,8 @@ def test_altoro_mutual_form(test_obj):
         is_screen_visible = test_obj.check_redirect_transfer_fund()
 
         #6 Transfer funds
-        test_obj.transfer_fund()
+        Amount = account.Amount
+        test_obj.transfer_fund(Amount)
 
         #7 Redirect to Bank Main Page
         test_obj.click_view_account_summary()

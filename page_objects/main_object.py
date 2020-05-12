@@ -3,6 +3,7 @@ This class handles all methods required for all pages
 """
 from .Base_Page import Base_Page
 import conf.login_form_conf as credentials
+import conf.bank_conf as account
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
@@ -27,7 +28,6 @@ class Main_object:
     account_summary_link = locators.view_account_summary_link
     go = locators.go
     account_summary_check = locators.view_account_summary_check
-    Amount = credentials.Amount
    
     result_flag = False
 
@@ -147,12 +147,12 @@ class Main_object:
         return result_flag
 
     @Wrapit._exceptionHandler
-    def set_transaction_amount(self, Transferamount, Amount, wait_time=1):
+    def set_transaction_amount(self, Amount, wait_time=1):
         "Set the transaction amount"
-        result_flag = self.set_text(self.transferAmountText, self.Amount)
+        result_flag = self.set_text(self.transferAmountText, Amount)
         self.smart_wait(wait_time,self.transferAmountText)
         self.conditional_write(result_flag,
-            positive='transcations amount set',
+            positive='transcations amount set %s'%Amount,
             negative='could not set transaction amount',
             level='debug')
 
@@ -170,13 +170,13 @@ class Main_object:
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def transfer_fund(self,wait_time=3):
+    def transfer_fund(self, Amount, wait_time=3):
         "use this method to transfer amount"
         self.add_from_account(self.fromAccountOption)
         self.smart_wait(wait_time,self.fromAccountOption)
         self.add_to_account(self.toAccountOption)
         self.smart_wait(wait_time, self.toAccountOption)
-        self.set_transaction_amount(self.transferAmountText,"300")
+        self.set_transaction_amount(Amount)
         self.submit_transfer_fund()
         result_flag = self.check_element_displayed(self.AmountTransferCheck)
         self.smart_wait(wait_time, self.AmountTransferCheck)
