@@ -126,7 +126,7 @@ class Main_object:
     def add_from_account(self, fromAccount, wait_time=3):
         "Use this method to add from Account"
         result_flag = self.click_element(self.fromAccount)
-        self.wait(wait_time)
+        self.smart_wait(wait_time, self.fromAccount)
         result_flag &= self.click_element(self.fromAccountOption)
         self.conditional_write(result_flag,
             positive='from account set',
@@ -139,7 +139,7 @@ class Main_object:
     def add_to_account(self, toAccount, wait_time=1):
         "Use this method to add from Account"
         result_flag = self.click_element(self.toAccount)
-        self.wait(wait_time)
+        self.smart_wait(wait_time, self.toAccount)
         result_flag &= self.click_element(self.toAccountOption)
         self.conditional_write(result_flag,
             positive='to account set',
@@ -152,7 +152,7 @@ class Main_object:
     def set_transaction_amount(self, Transferamount, Amount, wait_time=1):
         "Set the transaction amount"
         result_flag = self.set_text(self.transferAmountText, self.Amount)
-        self.wait(wait_time)
+        self.smart_wait(wait_time,self.transferAmountText)
         self.conditional_write(result_flag,
             positive='transcations amount set',
             negative='could not set transaction amount',
@@ -172,16 +172,16 @@ class Main_object:
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def transfer_fund(self):
+    def transfer_fund(self,wait_time=3):
         "use this method to transfer amount"
         self.add_from_account(self.fromAccountOption)
-        self.wait(3)
+        self.smart_wait(wait_time,self.fromAccountOption)
         self.add_to_account(self.toAccountOption)
-        self.wait(3)
+        self.smart_wait(wait_time, self.toAccountOption)
         self.set_transaction_amount(self.transferAmountText,"300")
         self.submit_transfer_fund()
         result_flag = self.check_element_displayed(self.AmountTransferCheck)
-        self.wait(3)
+        self.smart_wait(wait_time, self.AmountTransferCheck)
         self.conditional_write(result_flag,
             positive='Element located',
             negative='Element not located',
