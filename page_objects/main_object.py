@@ -27,8 +27,6 @@ class Main_object:
     account_summary_link = locators.view_account_summary_link
     go = locators.go
     account_summary_check = locators.view_account_summary_check
-    Username=credentials.Username
-    Password=credentials.Password
     Amount = credentials.Amount
    
     result_flag = False
@@ -57,20 +55,20 @@ class Main_object:
         return result_flag 
 
     @Wrapit._exceptionHandler
-    def set_username(self, username_field):
+    def set_username(self, Username):
         "user this method to enter username"
-        result_flag = self.set_text(self.username_field, self.Username)
+        result_flag = self.set_text(self.username_field,Username)
         self.conditional_write(result_flag,
-            positive='Set the Username to: %s'%self.Username,
+            positive='Set the Username to: %s'%Username,
             negative='Failed to set the name in the form',
             level='debug')
 
         return result_flag
 
     @Wrapit._exceptionHandler
-    def set_password(self, password_field):
+    def set_password(self, Password):
         "user this method to enter username"
-        result_flag = self.set_text(self.password_field, self.Password)
+        result_flag = self.set_text(self.password_field,Password)
         self.conditional_write(result_flag,
             positive='Password set succeefully',
             negative='Failed to set the name in the form',
@@ -91,10 +89,10 @@ class Main_object:
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def submit_form(self):
+    def Login(self, Username, Password):
         "submit the form"
-        result_flag = self.set_username(self.Username)
-        result_flag &= self.set_password(self.Password)
+        result_flag = self.set_username(Username)
+        result_flag &= self.set_password(Password)
         result_flag &= self.click_submit()
 
         return result_flag
