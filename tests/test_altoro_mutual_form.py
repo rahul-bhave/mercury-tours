@@ -12,7 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from page_objects.main_object import Main_object
 from utils.Option_Parser import Option_Parser
-import conf.bank_conf as account
+import conf.bank_form_conf as account
 import conf.login_form_conf as credentials
 import conf.testrail_caseid_conf as testrail_file
 

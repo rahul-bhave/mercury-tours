@@ -2,8 +2,6 @@
 This class handles all methods required for all pages
 """
 from .Base_Page import Base_Page
-import conf.login_form_conf as credentials
-import conf.bank_conf as account
 import conf.locators_conf as locators
 from utils.Wrapit import Wrapit
 import pytest
