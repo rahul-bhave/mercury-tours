@@ -32,28 +32,16 @@ def test_altoro_mutual_form(test_obj):
         #3. Turn on the highlighting feature
         test_obj.turn_on_highlight()
         
-        #4. Click on sign in link fill the form and submit the form
-        #test_obj.clik_signin()
-        #is_screen_visible = test_obj.check_redirect_login()
-        
-        #5. Enter user details and submit the form
+        #4. Login into application
         Username=credentials.Username
         Password=credentials.Password
         test_obj.Login(Username, Password)
         
-        #5. Click on transfer fund link
-        test_obj.clik_transfer_funds()
-        is_screen_visible = test_obj.check_redirect_transfer_fund()
-
-        #6 Transfer funds
+        #5 Transfer funds
         Amount = account.Amount
         test_obj.transfer_fund(Amount)
 
-        #7 Redirect to Bank Main Page
-        test_obj.click_view_account_summary()
-        is_screen_visible = test_obj.check_redirect_bank_page()
-
-        #8 Account summary
+        #6 View Account summary
         test_obj.view_account_summary()
 
         #waiting for pass counters

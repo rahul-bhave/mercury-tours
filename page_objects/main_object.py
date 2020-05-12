@@ -172,14 +172,16 @@ class Main_object:
     @Wrapit._screenshot
     def transfer_fund(self, Amount, wait_time=3):
         "use this method to transfer amount"
-        self.add_from_account(self.fromAccountOption)
-        self.smart_wait(wait_time,self.fromAccountOption)
-        self.add_to_account(self.toAccountOption)
-        self.smart_wait(wait_time, self.toAccountOption)
-        self.set_transaction_amount(Amount)
-        self.submit_transfer_fund()
-        result_flag = self.check_element_displayed(self.AmountTransferCheck)
-        self.smart_wait(wait_time, self.AmountTransferCheck)
+        result_flag = self.clik_transfer_funds()
+        result_flag &= self.check_redirect_transfer_fund()
+        result_flag &= self.add_from_account(self.fromAccountOption)
+        result_flag &= self.smart_wait(wait_time,self.fromAccountOption)
+        result_flag &= self.add_to_account(self.toAccountOption)
+        result_flag &= self.smart_wait(wait_time, self.toAccountOption)
+        result_flag &= self.set_transaction_amount(Amount)
+        result_flag &= self.submit_transfer_fund()
+        result_flag &= self.check_element_displayed(self.AmountTransferCheck)
+        result_flag &= self.smart_wait(wait_time, self.AmountTransferCheck)
         self.conditional_write(result_flag,
             positive='Element located',
             negative='Element not located',
@@ -224,11 +226,13 @@ class Main_object:
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def view_account_summary(self):
+    def view_account_summary(self, wait_time=3):
         "View account summary"
-        self.click_go_button()
-        result_flag = self.check_element_displayed(self.account_summary_check)
-        self.wait(3)
+        result_flag = self.click_view_account_summary()
+        result_flag &= self.check_redirect_bank_page()
+        result_flag &= self.click_go_button()
+        result_flag &= self.check_element_displayed(self.account_summary_check)
+        result_flag &= self.smart_wait(wait_time,self.account_summary_check)
         self.conditional_write(result_flag,
             positive='Element located',
             negative='Element not located',
