@@ -2,5 +2,5 @@
 Conf file for login_form
 """
 
-Username = "jsmith"
-Password = "Demo1234"
+username = "jsmith"
+password = "Demo1234"

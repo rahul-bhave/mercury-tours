@@ -38,9 +38,9 @@ def test_altoro_mutual_form(test_obj):
         test_obj.log_result(result_flag,positive="Login Page accessed\n",negative="Login Page not accessible")
         
         #5. Login into application
-        Username=credentials.Username
-        Password=credentials.Password
-        result_flag = test_obj.Login(Username, Password)
+        username=credentials.username
+        password=credentials.password
+        result_flag = test_obj.login(username, password)
         test_obj.log_result(result_flag,positive="Login successful\n",negative="\nLogin not successful\n")
 
         #6. Verify you are on the Bank Main Page

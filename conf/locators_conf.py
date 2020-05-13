@@ -17,9 +17,9 @@ signin="xpath,//a[@id='LoginLink']"
 login_redirect = "xpath//h1[contains(text(),'Online Banking Login')]"
 
 #Locators for login page
-username = "xpath,//input[@id='uid']"
-password = "xpath,//input[@id='passw']"
-submit="xpath,//input[@value='Login']"
+username_field = "xpath,//input[@id='uid']"
+password_field = "xpath,//input[@id='passw']"
+submit_button="xpath,//input[@value='Login']"
 transfer_link = "xpath,//a[@id='MenuHyperLink3']"
 transfer_fund_redirect = "xpath//h1[contains(text(),'Transfer Funds')]"
 
