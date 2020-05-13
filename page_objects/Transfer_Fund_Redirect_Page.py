@@ -1,6 +1,5 @@
 """
 This class models the altoro mutual transfer fund page
-
 """
 from .Base_Page import Base_Page
 from utils.Wrapit import Wrapit

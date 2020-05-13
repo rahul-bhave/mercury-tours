@@ -99,7 +99,6 @@ class Fund_object:
 
         return result_flag
  
-
     @Wrapit._exceptionHandler
     def click_go_button(self):
         "clicking on go button"

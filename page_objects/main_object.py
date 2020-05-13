@@ -1,5 +1,5 @@
 """
-This class handles all methods required for all pages
+This class handles all methods required for Main Page
 """
 from .Base_Page import Base_Page
 import conf.locators_conf as locators

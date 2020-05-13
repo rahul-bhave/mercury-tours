@@ -1,6 +1,5 @@
 """
 This class models the altoro bank page
-
 """
 from .Base_Page import Base_Page
 from utils.Wrapit import Wrapit

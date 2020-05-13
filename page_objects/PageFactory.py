@@ -16,7 +16,6 @@ from page_objects.Transfer_Fund_Redirect_Page import Transfer_Fund_Redirect_Page
 from page_objects.Bank_Main_Redirect_Page import Bank_Main_Redirect_Page
 import conf.base_url_conf
 
-
 class PageFactory():
     "PageFactory uses the factory design pattern."
     def get_page_object(page_name,base_url=conf.base_url_conf.base_url):

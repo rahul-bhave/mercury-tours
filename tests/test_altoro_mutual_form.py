@@ -28,39 +28,39 @@ def test_altoro_mutual_form(test_obj):
         test_obj = PageFactory.get_page_object("Main_Page")
 
         #2. Setup and register a driver
-        start_time = int(time.time())	#Set start_time with current time
+        start_time = int(time.time())
 
         #3. Turn on the highlighting feature
         test_obj.turn_on_highlight()
 
-        #4 Access Login page
+        #4. Access Login page
         result_flag = test_obj.access_login_page()
         test_obj.log_result(result_flag,positive="Login Page accessed\n",negative="Login Page not accessible")
         
-        #4. Login into application
+        #5. Login into application
         Username=credentials.Username
         Password=credentials.Password
         result_flag = test_obj.Login(Username, Password)
         test_obj.log_result(result_flag,positive="Login successful\n",negative="\nLogin not successful\n")
 
-        #5 Verify you are on the Bank Main Page
+        #6. Verify you are on the Bank Main Page
         result_flag = test_obj.verify_bank_main_page()
         test_obj.log_result(result_flag,positive="You are on Bank page\n",negative="\nBank page not accessible\n")
 
-        #6 Access Transfer Fund link
+        #7. Access Transfer Fund link
         result_flag = test_obj.access_transfer_fund()
         test_obj.log_result(result_flag,positive="Transfer fund accessible\n",negative="\n Transfer fund not accessible")
         
-        #7 Transfer funds
+        #8. Transfer funds
         Amount = account.Amount
         result_flag = test_obj.transfer_fund(Amount)
         test_obj.log_result(result_flag, positive="Amount transfered successfully\n", negative="\n Amount not transfered successfully\n")
 
-        #8 View Account summary
+        #9. View Account summary
         result_flag = test_obj.view_account_summary()
         test_obj.log_result(result_flag, positive="Account view summary shown\n", negative="\n Account view summary not shown\n")
 
-        #9 waiting for pass counters
+        #10. waiting for pass counters
         test_obj.wait(3)
         expected_pass = test_obj.result_counter
         actual_pass = test_obj.pass_counter

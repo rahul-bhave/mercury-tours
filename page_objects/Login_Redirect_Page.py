@@ -1,6 +1,5 @@
 """
-This class models the altoro mutual main page
-
+This class models the altoro mutual login page
 """
 from .Base_Page import Base_Page
 from utils.Wrapit import Wrapit
