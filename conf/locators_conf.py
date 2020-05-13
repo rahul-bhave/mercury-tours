@@ -13,8 +13,8 @@
 ###########################################
 
 #Locators for the Main Page
-signin="xpath,//a[@id='LoginLink']"
-login_redirect = "xpath//h1[contains(text(),'Online Banking Login')]"
+signin_link = "xpath,//a[@id='LoginLink']"
+login_redirect_heading = "xpath//h1[contains(text(),'Online Banking Login')]"
 
 #Locators for login page
 username_field = "xpath,//input[@id='uid']"
@@ -30,7 +30,7 @@ to_account_dropdown = "xpath,//select[@id='toAccount']"
 to_account_option = "xpath,//option[@value='800003']"
 transfer_ammount_text = "xpath,//input[@id='transferAmount']"
 transfer_amount_button = "xpath,//input[@id='transfer']"
-transfer_amount_check="xpath,//span[@id='_ctl0__ctl0_Content_Main_postResp']"
+transfer_amount_check = "xpath,//span[@id='_ctl0__ctl0_Content_Main_postResp']"
 
 #Locators for Bank Main Page
 view_account_summary_link = "xpath,//a[@id='MenuHyperLink1']"
