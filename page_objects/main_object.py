@@ -11,17 +11,6 @@ class Main_object:
     signin = locators.signin
     login_redirect = locators.login_redirect
     
-    fromAccount = locators.fromaccount_dropdown
-    fromAccountOption = locators.fromaccount_option
-    toAccount = locators.toaccount_dropdown
-    toAccountOption = locators.toaccount_option
-    transferAmountText = locators.transferammount_text
-    transferAmountButton = locators.transferamount_button
-    AmountTransferCheck = locators.transfer_amount_check
-    account_summary_link = locators.view_account_summary_link
-    go = locators.go
-    account_summary_check = locators.view_account_summary_check
-   
     result_flag = False
 
     @Wrapit._exceptionHandler

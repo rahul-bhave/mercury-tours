@@ -8,25 +8,25 @@ import pytest
 
 class Fund_object:
 
-    fromAccount = locators.fromaccount_dropdown
-    fromAccountOption = locators.fromaccount_option
-    toAccount = locators.toaccount_dropdown
-    toAccountOption = locators.toaccount_option
-    transferAmountText = locators.transferammount_text
-    transferAmountButton = locators.transferamount_button
-    AmountTransferCheck = locators.transfer_amount_check
+    from_account_dropdown = locators.from_account_dropdown
+    from_account_option = locators.from_account_option
+    to_account_dropdown = locators.to_account_dropdown
+    to_account_option = locators.to_account_option
+    transfer_amount_text = locators.transfer_ammount_text
+    transfer_amount_button = locators.transfer_amount_button
+    transfer_amount_check = locators.transfer_amount_check
     account_summary_link = locators.view_account_summary_link
-    go = locators.go
+    go_button = locators.go_button
     account_summary_check = locators.view_account_summary_check
     
     result_flag = False
 
     @Wrapit._exceptionHandler
-    def add_from_account(self, fromAccount, wait_time=3):
+    def add_from_account(self, from_account_dropdown, wait_time=3):
         "Use this method to add from Account"
-        result_flag = self.click_element(self.fromAccount)
-        self.smart_wait(wait_time, self.fromAccount)
-        result_flag &= self.click_element(self.fromAccountOption)
+        result_flag = self.click_element(self.from_account_dropdown)
+        self.smart_wait(wait_time, self.from_account_dropdown)
+        result_flag &= self.click_element(self.from_account_option)
         self.conditional_write(result_flag,
             positive='from account set',
             negative='failed to set from Account',
@@ -35,11 +35,11 @@ class Fund_object:
         return result_flag
 
     @Wrapit._exceptionHandler
-    def add_to_account(self, toAccount, wait_time=1):
+    def add_to_account(self, to_account_dropdown, wait_time=1):
         "Use this method to add from Account"
-        result_flag = self.click_element(self.toAccount)
-        self.smart_wait(wait_time, self.toAccount)
-        result_flag &= self.click_element(self.toAccountOption)
+        result_flag = self.click_element(self.to_account_dropdown)
+        self.smart_wait(wait_time, self.to_account_dropdown)
+        result_flag &= self.click_element(self.to_account_option)
         self.conditional_write(result_flag,
             positive='to account set',
             negative='failed to set to Account',
@@ -50,8 +50,8 @@ class Fund_object:
     @Wrapit._exceptionHandler
     def set_transaction_amount(self, Amount, wait_time=1):
         "Set the transaction amount"
-        result_flag = self.set_text(self.transferAmountText, Amount)
-        self.smart_wait(wait_time,self.transferAmountText)
+        result_flag = self.set_text(self.transfer_amount_text, Amount)
+        self.smart_wait(wait_time,self.transfer_amount_text)
         self.conditional_write(result_flag,
             positive='transcations amount set %s'%Amount,
             negative='could not set transaction amount',
@@ -61,7 +61,7 @@ class Fund_object:
 
     def submit_transfer_fund(self):
         "use this method to click on transfer fund button"
-        result_flag = self.click_element(self.transferAmountButton)
+        result_flag = self.click_element(self.transfer_amount_button)
         self.conditional_write(result_flag,
             positive='succesfully clicked',
             negative='click not successful',
@@ -73,14 +73,14 @@ class Fund_object:
     @Wrapit._screenshot
     def transfer_fund(self, Amount, wait_time=3):
         "use this method to transfer amount"
-        result_flag = self.add_from_account(self.fromAccountOption)
-        result_flag &= self.smart_wait(wait_time,self.fromAccountOption)
-        result_flag &= self.add_to_account(self.toAccountOption)
-        result_flag &= self.smart_wait(wait_time, self.toAccountOption)
+        result_flag = self.add_from_account(self.from_account_option)
+        result_flag &= self.smart_wait(wait_time,self.from_account_option)
+        result_flag &= self.add_to_account(self.to_account_option)
+        result_flag &= self.smart_wait(wait_time, self.to_account_option)
         result_flag &= self.set_transaction_amount(Amount)
         result_flag &= self.submit_transfer_fund()
-        result_flag &= self.check_element_displayed(self.AmountTransferCheck)
-        result_flag &= self.smart_wait(wait_time, self.AmountTransferCheck)
+        result_flag &= self.check_element_displayed(self.transfer_amount_check)
+        result_flag &= self.smart_wait(wait_time, self.transfer_amount_check)
         self.conditional_write(result_flag,
             positive='Element located',
             negative='Element not located',
@@ -102,7 +102,7 @@ class Fund_object:
     @Wrapit._exceptionHandler
     def click_go_button(self):
         "clicking on go button"
-        result_flag = self.click_element(self.go)
+        result_flag = self.click_element(self.go_button)
         self.conditional_write(result_flag,
             positive='succesfully clicked',
             negative='click not successful',
