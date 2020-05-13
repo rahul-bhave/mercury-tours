@@ -11,8 +11,8 @@ class Login_object:
     username_field = locators.username_field
     password_field = locators.password_field
     submit_button = locators.submit_button
-    bank_main_redirect = locators.bank_main_page_redirect
-    transfer_fund_redirect = locators.transfer_fund_redirect
+    bank_main_page_redirect_title = locators.bank_main_page_redirect_title
+    transfer_fund_redirect_heading = locators.transfer_fund_redirect_heading
     transfer_link = locators.transfer_link
     
     result_flag = False
@@ -65,7 +65,7 @@ class Login_object:
     @Wrapit._exceptionHandler
     def check_redirect_bank_page(self):
         result_flag = False
-        if self.check_element_present(self.bank_main_redirect) is not None:
+        if self.check_element_present(self.bank_main_page_redirect_title) is not None:
            result_flag = True
            self.conditional_write(result_flag,
                positive='You are on Bank page',

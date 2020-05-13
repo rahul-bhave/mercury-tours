@@ -8,7 +8,7 @@ import pytest
 
 class Bank_object:
 
-    transfer_fund_redirect = locators.transfer_fund_redirect
+    transfer_fund_redirect_heading = locators.transfer_fund_redirect_heading
     transfer_link = locators.transfer_link
     
     result_flag = False
@@ -27,7 +27,7 @@ class Bank_object:
     @Wrapit._exceptionHandler
     def check_redirect_transfer_fund(self):
         result_flag = False
-        if self.check_element_present(self.transfer_fund_redirect) is not None:
+        if self.check_element_present(self.transfer_fund_redirect_heading) is not None:
            result_flag = True
            self.conditional_write(result_flag,
                positive='You are on Tranasfer Fund page',

@@ -17,7 +17,7 @@ class Fund_object:
     transfer_amount_check = locators.transfer_amount_check
     account_summary_link = locators.view_account_summary_link
     go_button = locators.go_button
-    account_summary_check = locators.view_account_summary_check
+    view_account_summary_check_heading = locators.view_account_summary_check_heading
     
     result_flag = False
 
@@ -115,10 +115,9 @@ class Fund_object:
     def view_account_summary(self, wait_time=3):
         "View account summary"
         result_flag = self.click_view_account_summary()
-        # result_flag &= self.check_redirect_bank_page()
         result_flag &= self.click_go_button()
-        result_flag &= self.check_element_displayed(self.account_summary_check)
-        result_flag &= self.smart_wait(wait_time,self.account_summary_check)
+        result_flag &= self.check_element_displayed(self.view_account_summary_check_heading)
+        result_flag &= self.smart_wait(wait_time,self.view_account_summary_check_heading)
         self.conditional_write(result_flag,
             positive='Element located',
             negative='Element not located',
