@@ -12,7 +12,6 @@ class Login_object:
     password_field = locators.password_field
     submit_button = locators.submit_button
     bank_main_page_redirect_title = locators.bank_main_page_redirect_title
-    transfer_fund_redirect_heading = locators.transfer_fund_redirect_heading
     transfer_link = locators.transfer_link
     
     result_flag = False
