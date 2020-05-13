@@ -1,4 +1,4 @@
 """
 Conf file for transfer amount
 """
-Amount = "300"
+amount = "300"

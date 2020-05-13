@@ -48,12 +48,12 @@ class Fund_object:
         return result_flag
 
     @Wrapit._exceptionHandler
-    def set_transaction_amount(self, Amount, wait_time=1):
+    def set_transaction_amount(self, amount, wait_time=3):
         "Set the transaction amount"
-        result_flag = self.set_text(self.transfer_amount_text, Amount)
+        result_flag = self.set_text(self.transfer_amount_text, amount)
         self.smart_wait(wait_time,self.transfer_amount_text)
         self.conditional_write(result_flag,
-            positive='transcations amount set %s'%Amount,
+            positive='transcations amount set %s'%amount,
             negative='could not set transaction amount',
             level='debug')
 
@@ -71,13 +71,13 @@ class Fund_object:
 
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
-    def transfer_fund(self, Amount, wait_time=3):
+    def transfer_fund(self, amount, wait_time=3):
         "use this method to transfer amount"
         result_flag = self.add_from_account(self.from_account_option)
         result_flag &= self.smart_wait(wait_time,self.from_account_option)
         result_flag &= self.add_to_account(self.to_account_option)
         result_flag &= self.smart_wait(wait_time, self.to_account_option)
-        result_flag &= self.set_transaction_amount(Amount)
+        result_flag &= self.set_transaction_amount(amount)
         result_flag &= self.submit_transfer_fund()
         result_flag &= self.check_element_displayed(self.transfer_amount_check)
         result_flag &= self.smart_wait(wait_time, self.transfer_amount_check)

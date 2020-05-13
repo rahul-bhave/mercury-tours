@@ -52,8 +52,8 @@ def test_altoro_mutual_form(test_obj):
         test_obj.log_result(result_flag,positive="Transfer fund accessible\n",negative="\n Transfer fund not accessible")
         
         #8. Transfer funds
-        Amount = account.Amount
-        result_flag = test_obj.transfer_fund(Amount)
+        amount = account.amount
+        result_flag = test_obj.transfer_fund(amount)
         test_obj.log_result(result_flag, positive="Amount transfered successfully\n", negative="\n Amount not transfered successfully\n")
 
         #9. View Account summary
