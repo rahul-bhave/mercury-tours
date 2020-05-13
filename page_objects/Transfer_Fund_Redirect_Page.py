@@ -1,12 +1,12 @@
 """
-This class models the altoro mutual main page
+This class models the altoro mutual transfer fund page
 
 """
 from .Base_Page import Base_Page
 from utils.Wrapit import Wrapit
-from page_objects.main_object import Main_object
+from page_objects.fund_object import Fund_object
 
-class Transfer_Fund_Redirect_Page(Base_Page,Main_object):
+class Transfer_Fund_Redirect_Page(Base_Page,Fund_object):
     "Page Object for the Transfer Fund"
     
     def start(self):

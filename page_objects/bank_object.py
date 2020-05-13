@@ -1,5 +1,5 @@
 """
-This class handles all methods for Login
+This class handles all methods for Bank object
 """
 from .Base_Page import Base_Page
 import conf.locators_conf as locators
