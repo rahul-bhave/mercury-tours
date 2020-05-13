@@ -43,20 +43,24 @@ def test_altoro_mutual_form(test_obj):
         result_flag = test_obj.Login(Username, Password)
         test_obj.log_result(result_flag,positive="Login successful\n",negative="\nLogin not successful\n")
 
-        #5 Access Transfer Fund link
+        #5 Verify you are on the Bank Main Page
+        result_flag = test_obj.verify_bank_main_page()
+        test_obj.log_result(result_flag,positive="You are on Bank page\n",negative="\nBank page not accessible\n")
+
+        #6 Access Transfer Fund link
         result_flag = test_obj.access_transfer_fund()
         test_obj.log_result(result_flag,positive="Transfer fund accessible\n",negative="\n Transfer fund not accessible")
         
-        #5 Transfer funds
+        #7 Transfer funds
         Amount = account.Amount
         result_flag = test_obj.transfer_fund(Amount)
         test_obj.log_result(result_flag, positive="Amount transfered successfully\n", negative="\n Amount not transfered successfully\n")
 
-        #6 View Account summary
+        #8 View Account summary
         result_flag = test_obj.view_account_summary()
         test_obj.log_result(result_flag, positive="Account view summary shown\n", negative="\n Account view summary not shown\n")
 
-        #waiting for pass counters
+        #9 waiting for pass counters
         test_obj.wait(3)
         expected_pass = test_obj.result_counter
         actual_pass = test_obj.pass_counter

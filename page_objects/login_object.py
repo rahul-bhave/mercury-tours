@@ -11,6 +11,7 @@ class Login_object:
     username_field = locators.username
     password_field = locators.password
     submit = locators.submit
+    bank_main_redirect = locators.bank_main_page_redirect
     transfer_fund_redirect = locators.transfer_fund_redirect
     transfer_link = locators.transfer_link
     
@@ -49,29 +50,7 @@ class Login_object:
 
         return result_flag
 
-    @Wrapit._exceptionHandler
-    def clik_transfer_funds(self):
-        "use this method to click transfer funds"
-        result_flag=self.click_element(self.transfer_link, wait_time=3)
-        self.conditional_write(result_flag,
-            positive='transfer funds link clicked',
-            negative='transfer funds link can not be clicked',
-            level='debug')
-        return result_flag
-
-    @Wrapit._screenshot
-    @Wrapit._exceptionHandler
-    def check_redirect_transfer_fund(self):
-        result_flag = False
-        if self.check_element_present(self.transfer_fund_redirect) is not None:
-           result_flag = True
-           self.conditional_write(result_flag,
-               positive='You are on Tranasfer Fund page',
-               negative='Failed to go on Transfer Fund page',
-               level='debug')
-           self.switch_page("transfer_fund_redirect_page")
-        return result_flag 
-
+   
     @Wrapit._exceptionHandler
     @Wrapit._screenshot
     def Login(self, Username, Password):
@@ -84,9 +63,21 @@ class Login_object:
 
     @Wrapit._screenshot
     @Wrapit._exceptionHandler
-    def access_transfer_fund(self):
-        "check access transfer fund is avialble"
-        result_flag = self.clik_transfer_funds()
-        result_flag &= self.check_redirect_transfer_fund()
+    def check_redirect_bank_page(self):
+        result_flag = False
+        if self.check_element_present(self.bank_main_redirect) is not None:
+           result_flag = True
+           self.conditional_write(result_flag,
+               positive='You are on Bank page',
+               negative='Failed to go on Bank page',
+               level='debug')
+           self.switch_page("bank_main_redirect_page")
+        return result_flag
+
+    @Wrapit._exceptionHandler
+    @Wrapit._screenshot
+    def verify_bank_main_page(self):
+        "check you are bank main page"
+        result_flag = self.check_redirect_bank_page()
 
         return result_flag

@@ -10,7 +10,7 @@ class Main_object:
 
     signin = locators.signin
     login_redirect = locators.login_redirect
-    bank_main_redirect = locators.bank_main_page_redirect
+    
     fromAccount = locators.fromaccount_dropdown
     fromAccountOption = locators.fromaccount_option
     toAccount = locators.toaccount_dropdown
@@ -133,19 +133,7 @@ class Main_object:
             level='debug')
 
         return result_flag
-
-    @Wrapit._screenshot
-    @Wrapit._exceptionHandler
-    def check_redirect_bank_page(self):
-        result_flag = False
-        if self.check_element_present(self.bank_main_redirect) is not None:
-           result_flag = True
-           self.conditional_write(result_flag,
-               positive='You are on Bank page',
-               negative='Failed to go on Bank page',
-               level='debug')
-           self.switch_page("bank_main_redirect_page")
-        return result_flag 
+ 
 
     @Wrapit._exceptionHandler
     def click_go_button(self):
@@ -163,7 +151,7 @@ class Main_object:
     def view_account_summary(self, wait_time=3):
         "View account summary"
         result_flag = self.click_view_account_summary()
-        result_flag &= self.check_redirect_bank_page()
+        # result_flag &= self.check_redirect_bank_page()
         result_flag &= self.click_go_button()
         result_flag &= self.check_element_displayed(self.account_summary_check)
         result_flag &= self.smart_wait(wait_time,self.account_summary_check)

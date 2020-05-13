@@ -4,9 +4,9 @@ This class models the altoro bank page
 """
 from .Base_Page import Base_Page
 from utils.Wrapit import Wrapit
-from page_objects.main_object import Main_object
+from page_objects.bank_object import Bank_object
 
-class Bank_Main_Redirect_Page(Base_Page,Main_object):
+class Bank_Main_Redirect_Page(Base_Page,Bank_object):
     "Page Object for the Bank Main Page"
     
     def start(self):
