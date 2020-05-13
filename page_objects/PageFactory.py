@@ -5,10 +5,9 @@ Add elif clauses as and when you implement new pages.
 Pages implemented so far:
 1. Altoro Mutual Main Page
 2. Altoro Mutual Login Page
-3. Altoro Mutual Transfer Fund Page
+3. Altro Mutual Bank Page
+4. Altoro Mutual Transfer Fund Page
 """
-
-from page_objects.zero_mobile_page import Zero_Mobile_Page
 from page_objects.zero_page import Zero_Page
 from page_objects.Main_Page import Main_Page
 from page_objects.Login_Redirect_Page import Login_Redirect_Page
@@ -24,8 +23,6 @@ class PageFactory():
         page_name = page_name.lower()
         if page_name in ["zero","zero page","agent zero"]:
             test_obj = Zero_Page(base_url=base_url)
-        elif page_name in ["zero mobile","zero mobile page"]:
-            test_obj = Zero_Mobile_Page()
         elif page_name == "main_page":
             test_obj = Main_Page(base_url=base_url)
         elif page_name == "login_redirect_page":
